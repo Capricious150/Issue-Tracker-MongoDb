@@ -1,0 +1,25 @@
+{
+  "name": "issue_tracker",
+  "version": "1.0.0",
+  "description": "The purpose of this project is to make an issue-tracker/task manager powered by MongoDB on the backend.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Capricious150/Issue-Tracker-MongoDb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Capricious150/Issue-Tracker-MongoDb/issues"
+  },
+  "homepage": "https://github.com/Capricious150/Issue-Tracker-MongoDb#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.9"
+  }
+}
