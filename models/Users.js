@@ -7,14 +7,8 @@ const userSchema = new Schema({
     last_name: String,
     // Adding password for now. May remove later depending on how I handle auth
     password: {type: String, default: 'admin'},
-    tasks: [{
-        type: Schema.Types.ObjectId,
-        ref: "Task"
-    }],
-    projects: [{
-        type: Schema.Types.ObjectId,
-        ref: "Project"
-    }]
+    tasks: [],
+    projects: []
 });
 
 const User = mongoose.model('User', userSchema);

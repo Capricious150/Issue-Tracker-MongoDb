@@ -4,14 +4,8 @@ const Schema = mongoose.Schema;
 const projectSchema = new Schema({
     title: {type: String, required: true},
     proj_desc: String,
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: "User"
-    },
-    tasks: [{
-        type: Schema.Types.ObjectId,
-        ref: "Task"
-    }]
+    owner: String,
+    tasks: []
 })
 
 const Project = mongoose.model('Project', projectSchema);
