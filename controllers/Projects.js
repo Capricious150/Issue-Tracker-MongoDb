@@ -19,6 +19,18 @@ const projectController = {
         let found = await Project.find()
         res.status(200).json(found)
     },
+    findByOwner: async (req,res) => {
+        let found = await Project.find({
+            owner: req.params.owner
+        })
+        if (found[0] !== undefined){
+            console.log(found[0].title)
+            res.status(200).json(found)
+        } else {
+            console.log("No projects found")
+            res.status(500).json({message: "No projects found"})
+        }
+    },
     create: async (req,res) => {
 
         let notADup = await Project.find({
@@ -71,6 +83,7 @@ const projectController = {
 
 router.get('/', projectController.findAll);
 router.get('/:title', projectController.find);
+router.get('/owner/:owner', projectController.findByOwner);
 router.post('/create', projectController.create);
 router.put('/update/:title', projectController.update);
 router.delete('/delete/:title', projectController.delete);
