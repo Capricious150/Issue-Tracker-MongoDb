@@ -20,7 +20,7 @@ const handleTaskSubmit = async (event) => {
             'title': $('#taskTitle').val(),
             'body': $('#taskBody').val(),
             'owner': 'Capricious150',
-            'project': 'Issue Tracker'
+            'project': $('#projectsDropdown').val()
         }),
         headers: {
             'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ const markResolved = async (event) => {
     })
     console.log("After the await")
     console.log(response)
-    if (response) {
+    if (response.ok) {
         console.log('Condition Met')
         document.location.replace('/tasks/')
     } else {
@@ -53,7 +53,13 @@ const markResolved = async (event) => {
     }
 }
 
+const consoleLogger = (event) => {
+    event.preventDefault();
+    console.log($('#projectsDropdown').val())
+}
+
 $('#viewResolved').on('click', getResolved);
 $('#viewUnresolved').on('click', getUnresolved);
 $('#taskSubmitButton').on('click', handleTaskSubmit);
 $('.markResolved').on('click', markResolved)
+$('#testButton').on('click', consoleLogger)

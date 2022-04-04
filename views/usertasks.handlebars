@@ -1,4 +1,5 @@
 <div>
+        <button id="testButton" type="button">Console Log Button</button>
     {{#if resolvedPage}}
         <button id="viewUnresolved" type="button">View Unresolved Tasks</button>
     {{/if}}
@@ -29,6 +30,13 @@
         <h4>Add a new Task</h4>
         <p>Title: <input type="text" id="taskTitle"></p>
         <p>Description: <input type="text" id="taskBody"></p>
+        <p>Project: 
+            <select name="projects" id="projectsDropdown">
+                {{#each projectList as |project|}}
+                    <option value = "{{project.title}}">{{project.title}}</option>
+                {{/each}}
+            </select>
+        </p>
         <button type="button" id="taskSubmitButton">Submit</button>
     </form>
     {{/unless}}

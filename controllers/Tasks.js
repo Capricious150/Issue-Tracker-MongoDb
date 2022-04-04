@@ -1,5 +1,4 @@
-const { ObjectId } = require('bson');
-const {Task} = require('../models');
+const {Task, Project} = require('../models');
 const router = require('express').Router();
 
 const taskController = {
@@ -30,6 +29,7 @@ const taskController = {
         }
     },
     findAll: async (req,res) => {
+        let projectList = await Project.find().lean()
         let resolvedPage = false;
         let renderedTasks = await Task.find({
             resolved: false
@@ -37,7 +37,8 @@ const taskController = {
         console.log(renderedTasks);
         res.status(200).render('usertasks', {
             renderedTasks,
-            resolvedPage
+            resolvedPage,
+            projectList
         });
     },
     findAllResolved: async (req,res) => {
@@ -48,7 +49,7 @@ const taskController = {
         console.log(renderedTasks);
         res.status(200).render('usertasks', {
             renderedTasks,
-            resolvedPage
+            resolvedPage,
         });
     },
     create: async (req,res) => {
@@ -66,7 +67,7 @@ const taskController = {
     resolve: (req,res) => {
         Task.findOneAndUpdate(
             {
-                _id: ObjectId(req.params.id)
+                _id: req.params.id
             },
             {
                 resolved: true,
