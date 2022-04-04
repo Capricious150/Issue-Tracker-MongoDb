@@ -1,4 +1,10 @@
 <div>
+    {{#if resolvedPage}}
+        <button id="viewUnresolved" type="button">View Unresolved Tasks</button>
+    {{/if}}
+    {{#unless resolvedPage}}
+        <button id="viewResolved" type="button">View Resolved Tasks</button>
+    {{/unless}}
     <div>
         {{#each renderedTasks as |task|}}
         <h4>{{task.title}}</h4>
@@ -9,7 +15,22 @@
         {{#if task.owner}}
         <p><b>Owner:</b> {{task.owner}}</p>
         {{/if}}
+        <p><b>Created On:</b> {{task.created_on}}</p>
+        {{#if task.resolved_on}}
+        <p><b>Resolved On:</b> {{task.resolved_on}}</p>
+        {{/if}}
+        {{#unless task.resolved}}
+        <button class="markResolved" type="button" value="{{task._id}}">Mark Resolved</button>
+        {{/unless}}
         {{/each}}
     </div>
+    {{#unless resolvedPage}}
+    <form>
+        <h4>Add a new Task</h4>
+        <p>Title: <input type="text" id="taskTitle"></p>
+        <p>Description: <input type="text" id="taskBody"></p>
+        <button type="button" id="taskSubmitButton">Submit</button>
+    </form>
+    {{/unless}}
 
 </div>
