@@ -1,0 +1,15 @@
+<div>
+    <div>
+        {{#each renderedTasks as |task|}}
+        <h4>{{task.title}}</h4>
+        <p>{{task.body}}</p>
+        {{#if task.project}}
+        <p><b>Project:</b> {{task.project}}</p>
+        {{/if}}
+        {{#if task.owner}}
+        <p><b>Owner:</b> {{task.owner}}</p>
+        {{/if}}
+        {{/each}}
+    </div>
+
+</div>

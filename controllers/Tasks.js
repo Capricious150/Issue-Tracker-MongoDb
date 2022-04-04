@@ -27,7 +27,11 @@ const taskController = {
         }
     },
     findUnassigned: async (req,res) => {
-        res.status(500).json({message: "This route is still pending"})
+        let renderedTasks = await Task.find().lean()
+        console.log(renderedTasks);
+        res.status(200).render('usertasks', {
+            renderedTasks
+        });
     },
     create: async (req,res) => {
         let newTask = new Task(req.body);

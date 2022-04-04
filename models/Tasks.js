@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const now = Date.now()
 
 const taskSchema = new Schema({
     title: {type: String, required: true},
@@ -10,7 +9,7 @@ const taskSchema = new Schema({
     owner: String,
     project: String,
     resolved: {type: Boolean, default: false},
-    created_on: {type: Date, default: now},
+    created_on: {type: Date, default: Date.now},
     resolved_on: Date
 });
 
