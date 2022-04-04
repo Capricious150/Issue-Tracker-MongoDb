@@ -3,13 +3,17 @@ const router = require('express').Router();
 
 const taskController = {
     findByProject: async (req,res) => {
-        let found = await Task.find({
+        renderedTasks = await Task.find({
             project: req.params.title,
             resolved: false
-        })
-        console.log(found)
-        if (found[0] !== undefined){
-            res.status(200).json(found)
+        }).lean()
+
+
+        console.log(renderedTasks)
+        if (renderedTasks){
+            res.status(200).render('usertasks', {
+                renderedTasks
+            })
         } else {
             console.log("No projects found")
             res.status(500).json({message: "No projects found"})
