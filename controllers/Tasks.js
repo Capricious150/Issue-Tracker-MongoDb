@@ -49,7 +49,11 @@ const taskController = {
         let resolvedPage = true;
         let renderedTasks = await Task.find({
             resolved: true
-        }).lean()
+        }).sort(
+            {
+                resolved_on: -1
+            }
+        ).lean()
         console.log(renderedTasks);
         res.status(200).render('usertasks', {
             renderedTasks,
