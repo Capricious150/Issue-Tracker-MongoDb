@@ -1,5 +1,14 @@
 console.log("Yes you're in the right JS file");
 
+class Note {
+    constructor(title,body){
+        this.title = title;
+        this.body = body;
+    }
+}
+
+
+
 const getResolved = () => {
     document.location.replace('/tasks/resolved')
 }

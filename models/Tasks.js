@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const taskSchema = new Schema({
     title: {type: String, required: true},
     body: String,
-    notes: [],
+    notes: Array,
     // Tasks can be associated with both Users and Projects, but neither is required
     owner: String,
     project: String,

@@ -85,6 +85,22 @@ const taskController = {
                 }
             })
     },
+    newNote: async (req,res) => {
+        const update = await Task.findOneAndUpdate(
+            {
+                _id: req.params.id
+            },
+            {$push:
+                {
+                    notes: req.body
+                }
+            })
+        if (update){
+            res.status(200).json(update)
+        } else {
+            res.status(500).json({message: "Something went wrong with async function"})
+        }
+    },
     delete: async (req,res) => {
         res.status(500).json({message: "This route is still pending"})
     },
@@ -97,6 +113,7 @@ router.get('/owner/:username', taskController.findByOwner);
 router.post('/create', taskController.create);
 router.put('/update/:param', taskController.update);
 router.put('/resolve/:id', taskController.resolve);
+router.put('/newnote/:id', taskController.newNote);
 router.delete('/delete/:param', taskController.delete);
 
 

@@ -9,7 +9,7 @@
     <div>
         {{#each renderedTasks as |task|}}
         <h4>{{task.title}}</h4>
-        <p>{{task.body}}</p>
+        <p><b>Description: </b>{{task.body}}</p>
         {{#if task.project}}
         <p><b>Project:</b> {{task.project}}</p>
         {{/if}}
@@ -20,8 +20,19 @@
         {{#if task.resolved_on}}
         <p><b>Resolved On:</b> {{task.resolved_on}}</p>
         {{/if}}
+        {{#if task.notes}}
+            {{#each task.notes as |note|}}
+            <p><b>Note:</b> {{note.body}}</p>
+            {{/each}}
+        {{/if}}
         {{#unless task.resolved}}
-        <button class="markResolved" type="button" value="{{task._id}}">Mark Resolved</button>
+        <div>
+        <p><b>Add Note:</b></p>
+        <p>Note Title: <input type="text" class="noteTitle"></p>
+        <p>Note Body: <input type="text" class="noteBody"</p>
+        <p><button class="addNoteButton" type="button" value="{{task._id}}">Add New Note</button>
+        <button class="markResolved" type="button" value="{{task._id}}">Mark Resolved</button></p>
+        </div>
         {{/unless}}
         {{/each}}
     </div>
