@@ -98,7 +98,9 @@ const taskController = {
                 {
                     notes: req.body
                 }
-            })
+            },
+            {new: true}
+            )
         if (update){
             res.status(200).json(update)
         } else {
@@ -115,9 +117,9 @@ router.get('/resolved', taskController.findAllResolved);
 router.get('/project/:title', taskController.findByProject);
 router.get('/owner/:username', taskController.findByOwner);
 router.post('/create', taskController.create);
+router.post('/newnote/:id', taskController.newNote);
 router.put('/update/:param', taskController.update);
 router.put('/resolve/:id', taskController.resolve);
-router.put('/newnote/:id', taskController.newNote);
 router.delete('/delete/:param', taskController.delete);
 
 

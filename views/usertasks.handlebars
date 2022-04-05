@@ -8,7 +8,7 @@
     {{/unless}}
     <div>
         {{#each renderedTasks as |task|}}
-        <h4>{{task.title}}</h4>
+        <h3>{{task.title}}</h3>
         <p><b>Description: </b>{{task.body}}</p>
         {{#if task.project}}
         <p><b>Project:</b> {{task.project}}</p>
@@ -22,11 +22,11 @@
         {{/if}}
         {{#if task.notes}}
             {{#each task.notes as |note|}}
-            <p><b>Note:</b> {{note.body}}</p>
+            <p><b>Note - "{{note.title}}":</b> {{note.body}}</p>
             {{/each}}
         {{/if}}
         {{#unless task.resolved}}
-        <div>
+        <div class="updateTaskDiv">
         <p><b>Add Note:</b></p>
         <p>Note Title: <input type="text" class="noteTitle"></p>
         <p>Note Body: <input type="text" class="noteBody"</p>
